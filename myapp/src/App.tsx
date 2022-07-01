@@ -5,7 +5,8 @@ import { hot } from "react-hot-loader/root";
 import { Topic } from "./interfaces";
 import { Topics } from "./components/topics";
 import { OneTopic } from "./components/topic";
-import { CreateNewTopic } from "./components/createNewTopic"
+import { CreateNewTopic } from "./components/createNewTopic";
+import { EditTopic } from './components/editTopic';
 
 const App: React.FC = () => {
   const test = [
@@ -23,10 +24,20 @@ const App: React.FC = () => {
   }
 ]
   const [topicInfo, setTopicInfo] = useState<Topic[]>(test);
-  const [createModal, setCreateModal] = useState(false)
+  const [createModal, setCreateModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [changeIndex, setChangeIndex] = useState<number>(Infinity);
+  const [targetChange, setTargetChange] = useState<Topic | {}>({});
 
   function createNewTopic() {
-    !createModal ? setCreateModal(true) : setCreateModal(false)
+    !createModal ? setCreateModal(true) : setCreateModal(false);
+  }
+
+  function showEdit(id: number) {
+    if (!editModal) setEditModal(true);
+    let target = topicInfo.slice(id, id + 1)[0];
+    setTargetChange(target);
+    setChangeIndex(id);
   }
 
   function addTopic(newTopic: Topic) {
@@ -38,13 +49,17 @@ const App: React.FC = () => {
   function deleteTopic(index: number) {
     console.log('indelete')
     let alteredList = [...topicInfo];
-    console.log(topicInfo, index)
     alteredList.splice(index, 1);
     setTopicInfo(alteredList);
   }
 
-  function editTopic(index: number) {
-
+  function editTopic(edited: Topic) {
+    let pastTopics = [...topicInfo];
+    pastTopics.splice(changeIndex, 1, edited)
+    setEditModal(false);
+    setChangeIndex(Infinity);
+    setTargetChange({});
+    setTopicInfo([...pastTopics])
   }
 
   return (
@@ -52,11 +67,12 @@ const App: React.FC = () => {
       <div>
         <h1>Current Topics</h1>
         <div className='topic-container'>
-          <Topics topicInfo={topicInfo} deleteTopic={deleteTopic}/>
+          <Topics topicInfo={topicInfo} deleteTopic={deleteTopic} showEdit={showEdit}/>
         </div>
       </div>
       <button onClick={createNewTopic}>Add New Topic</button>
       {createModal ? <CreateNewTopic addTopic={addTopic} /> : null}
+      {editModal ? <EditTopic editTopic={editTopic} targetChange={targetChange}/> : null}
     </>
 
         );

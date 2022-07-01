@@ -7,9 +7,10 @@ type OneTopicProps =  {
   index: number;
   showDetails: (id: string) => void;
   deleteTopic: (index: number) => void;
+  showEdit: (id: number) => void;
 };
 
-export const OneTopic: React.FC<OneTopicProps> = ({details, index, showDetails, deleteTopic}) => {
+export const OneTopic: React.FC<OneTopicProps> = ({details, index, showDetails, deleteTopic, showEdit}) => {
 
   return (
     <>
@@ -22,6 +23,7 @@ export const OneTopic: React.FC<OneTopicProps> = ({details, index, showDetails, 
       </div>
       </div>
       <button onClick={()=>deleteTopic(index)}>Delete</button>
+      <button onClick={()=>showEdit(index)}>Edit</button>
     </>
 )
 };
