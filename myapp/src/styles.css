@@ -14,7 +14,9 @@ button {
   margin: 5px;
 }
 
-
+button:hover {
+  font-weight: 800;
+}
 
 form {
   position: absolute;
@@ -51,6 +53,12 @@ form button {
 .details {
   display: none;
   padding: 5px
+}
+
+.topic-container {
+  max-height: 500px;
+  overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 .one-topic-container {
