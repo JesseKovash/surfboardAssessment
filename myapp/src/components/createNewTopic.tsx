@@ -30,6 +30,10 @@ export const CreateNewTopic: React.FC<CreateNewTopicProps>= ({addTopic}) => {
         timeEst: time,
         description: desc
     };
+    setName('');
+    setTitle('');
+    setTime(0);
+    setDesc('')
     addTopic(newTopicFinal)
   }
 

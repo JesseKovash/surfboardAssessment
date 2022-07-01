@@ -31,7 +31,20 @@ const App: React.FC = () => {
 
   function addTopic(newTopic: Topic) {
     let pastTopics = topicInfo;
+    setCreateModal(false)
     setTopicInfo([...pastTopics, newTopic])
+  }
+
+  function deleteTopic(index: number) {
+    console.log('indelete')
+    let alteredList = [...topicInfo];
+    console.log(topicInfo, index)
+    alteredList.splice(index, 1);
+    setTopicInfo(alteredList);
+  }
+
+  function editTopic(index: number) {
+
   }
 
   return (
@@ -39,11 +52,11 @@ const App: React.FC = () => {
       <div>
         <h1>Current Topics</h1>
         <div className='topic-container'>
-          <Topics topicInfo={topicInfo}/>
+          <Topics topicInfo={topicInfo} deleteTopic={deleteTopic}/>
         </div>
       </div>
       <button onClick={createNewTopic}>Add New Topic</button>
-      {createModal ? <CreateNewTopic addTopic={addTopic}/> : null}
+      {createModal ? <CreateNewTopic addTopic={addTopic} /> : null}
     </>
 
         );

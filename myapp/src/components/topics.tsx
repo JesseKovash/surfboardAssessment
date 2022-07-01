@@ -5,9 +5,10 @@ import { OneTopic } from './topic';
 
 type TopicsProps = {
   topicInfo: Topic[] | [];
+  deleteTopic: (index: number) => void;
 };
 
-export const Topics: React.FC<TopicsProps>= ({topicInfo}) => {
+export const Topics: React.FC<TopicsProps>= ({topicInfo, deleteTopic}) => {
   function showDetails(id: string) {
     const target = document.getElementById(id) as HTMLDivElement;
     target.style.display === 'none' || target.style.display === '' ?
@@ -18,7 +19,7 @@ export const Topics: React.FC<TopicsProps>= ({topicInfo}) => {
   let topicList;
 
   if (topicInfo.length > 0) {
-    topicList = topicInfo.map((oneTopic, index)=><div key={oneTopic.title}><OneTopic details={oneTopic} index={index} showDetails={showDetails}/></div>)
+    topicList = topicInfo.map((oneTopic, index)=><div key={oneTopic.title}><OneTopic details={oneTopic} index={index} showDetails={showDetails} deleteTopic={deleteTopic}/></div>)
   } else  {
     topicList = null;
   }
