@@ -1,4 +1,62 @@
+body {
+  color: darkblue;
+  font-family: sans-serif;
+}
+
+button {
+  width: 150px;
+  background-color: darkblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1rem;
+  margin: 5px;
+}
+
+
+
+form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: darkblue;
+  color: white;
+  padding: 5px;
+  width: 450px;
+  height: 500px;
+  display: flex;
+  flex-direction: column ;
+}
+
+label, input {
+  padding: 2px 0;
+}
+
+form button {
+  background-color: white;
+  color: blue;
+  margin: 20px 0;
+}
+
+#app {
+  position: relative;
+}
+
+.topic{
+  font-size: 1.4rem;
+  padding: 5px
+}
 
 .details {
   display: none;
+  padding: 5px
+}
+
+.one-topic-container {
+  background-color: lightgray;
+  border: darkblue 3px solid;
+  max-width: 450px;
+  max-height: 200px;
+  margin: 10px 0;
 }

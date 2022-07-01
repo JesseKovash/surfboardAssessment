@@ -13,7 +13,7 @@ type OneTopicProps =  {
 export const OneTopic: React.FC<OneTopicProps> = ({details, index, showDetails, deleteTopic, showEdit}) => {
 
   return (
-    <>
+    <div className='one-topic-container'>
       <div className='oneTopic' onClick={()=>showDetails(`${index}`)}>
       <div className='topic'>TOPIC: {details.name}</div>
       <div className='details' id={`${index}`}>
@@ -24,6 +24,6 @@ export const OneTopic: React.FC<OneTopicProps> = ({details, index, showDetails, 
       </div>
       <button onClick={()=>deleteTopic(index)}>Delete</button>
       <button onClick={()=>showEdit(index)}>Edit</button>
-    </>
+    </div>
 )
 };

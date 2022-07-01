@@ -40,6 +40,7 @@ export const CreateNewTopic: React.FC<CreateNewTopicProps>= ({addTopic}) => {
   return (
     <>
     <form onSubmit={(e)=>processData(e)}>
+      <h1>Create New Topic</h1>
       <label>Topic Name</label>
       <input id="name" type="text" value={name} onChange={(e)=>handleInputChange(e)}></input>
       <label>Title</label>

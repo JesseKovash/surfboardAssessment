@@ -27,7 +27,7 @@ const App: React.FC = () => {
   const [createModal, setCreateModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [changeIndex, setChangeIndex] = useState<number>(Infinity);
-  const [targetChange, setTargetChange] = useState<Topic | {}>({});
+  const [targetChange, setTargetChange] = useState<Topic>(topicInfo[0]);
 
   function createNewTopic() {
     !createModal ? setCreateModal(true) : setCreateModal(false);
@@ -47,7 +47,6 @@ const App: React.FC = () => {
   }
 
   function deleteTopic(index: number) {
-    console.log('indelete')
     let alteredList = [...topicInfo];
     alteredList.splice(index, 1);
     setTopicInfo(alteredList);
@@ -58,7 +57,6 @@ const App: React.FC = () => {
     pastTopics.splice(changeIndex, 1, edited)
     setEditModal(false);
     setChangeIndex(Infinity);
-    setTargetChange({});
     setTopicInfo([...pastTopics])
   }
 

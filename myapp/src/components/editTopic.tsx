@@ -8,7 +8,7 @@ type EditTopicProps = {
 };
 
 export const EditTopic: React.FC<EditTopicProps>= ({editTopic, targetChange}) => {
-  console.log(targetChange)
+
   const [name, setName] = useState(targetChange.name);
   const [title, setTitle] = useState(targetChange.title);
   const [time, setTime] = useState(targetChange.timeEst);
@@ -41,6 +41,7 @@ export const EditTopic: React.FC<EditTopicProps>= ({editTopic, targetChange}) =>
   return (
     <>
     <form onSubmit={(e)=>processData(e)}>
+      <h1>Edit Topic</h1>
       <label>Topic Name</label>
       <input id="name" type="text" value={name} onChange={(e)=>handleInputChange(e)}></input>
       <label>Title</label>
